@@ -1,3 +1,36 @@
+server:
+  port: 8090
+
 spring:
   application:
     name: url-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/url_shortener
+    username: brahim
+    password: brahim
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/Brahim
+
+
+application:
+  base-url: http://localhost:8090
+  url:
+    default-expiration-days: 7
+    shortcode-length: 7
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
