@@ -34,3 +34,13 @@ logging:
   level:
     org.springframework.security: INFO
     org.hibernate.SQL: DEBUG
+
+keycloak:
+  realm: Brahim
+  auth-server-url: http://localhost:8081
+  client-id: url-shortener-client
+  client-secret: SyAh1b9gdCD81IznAoBiqPmMxsTIeYs8
+  username: admin
+  password: admin
+
+
