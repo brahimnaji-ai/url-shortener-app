@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8050
 
 spring:
   application:
@@ -25,7 +25,7 @@ spring:
 
 
 application:
-  base-url: http://localhost:8090
+  base-url: http://localhost:8050
   url:
     default-expiration-days: 7
     shortcode-length: 7
@@ -39,8 +39,8 @@ keycloak:
   realm: Brahim
   auth-server-url: http://localhost:8081
   client-id: url-shortener-client
-  client-secret: SyAh1b9gdCD81IznAoBiqPmMxsTIeYs8
-  username: admin
-  password: admin
+  client-secret: bOX1qd2OFDmMXRcA31AoOx2CRvL8TN8H
+  username: kizaru
+  password: 123
 
 
