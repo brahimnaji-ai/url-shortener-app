@@ -10,6 +10,8 @@ public class UserMapper {
         return User.builder()
                 .keycloakId(keycloakUserId)
                 .username(request.username())
+                .firstName(request.firstName())
+                .lastName(request.lastName())
                 .email(request.email())
                 .build();
     }
