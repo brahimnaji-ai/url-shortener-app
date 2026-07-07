@@ -42,5 +42,6 @@ keycloak:
   client-secret: bOX1qd2OFDmMXRcA31AoOx2CRvL8TN8H
   username: kizaru
   password: 123
+  token-endpoint: "${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/token"
 
 
