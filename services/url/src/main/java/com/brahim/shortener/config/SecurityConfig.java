@@ -27,9 +27,9 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity Http)
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
     {
-        Http
+        http
                 .sessionManagement(sess -> sess.sessionCreationPolicy(STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth-> auth
@@ -40,13 +40,13 @@ public class SecurityConfig {
                 );
         // OAuth2 Resource Server (JWT validation)
 
-        Http
+        http
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt->jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
                 )
                 .cors(cors ->cors.configurationSource(corsConfigurationSource()));
 
-        return Http.build();
+        return http.build();
     }
 
     @Bean
