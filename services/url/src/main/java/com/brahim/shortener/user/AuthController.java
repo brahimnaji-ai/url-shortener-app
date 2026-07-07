@@ -10,10 +10,11 @@ import com.brahim.shortener.user.dto.response.RegisterResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -41,9 +42,14 @@ public class AuthController {
     @PostMapping("/refresh")
     public ResponseEntity<RefreshResponse> refresh(
             @RequestBody @Valid RefreshRequest request
-    ){
+    )throws IOException, InterruptedException {
         return ResponseEntity.ok(service.refresh(request));
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<String> me(@AuthenticationPrincipal Jwt jwt){
+        String username = jwt.getClaimAsString("preferred_username");
+        return ResponseEntity.ok(username);
+    }
 
 }
