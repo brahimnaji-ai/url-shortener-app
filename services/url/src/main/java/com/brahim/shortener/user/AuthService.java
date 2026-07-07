@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.IOException;
+
 import static com.brahim.shortener.user.exception.ErrorCode.*;
 
 @Service
@@ -70,12 +73,14 @@ public class AuthService {
         );
     }
 
-    public LoginResponse login(LoginRequest request) {
-        return null;
 
+
+
+    public LoginResponse login(LoginRequest request) {
+        return keycloakService.login(request.username(), request.password());
     }
 
-    public RefreshResponse refresh(RefreshRequest request) {
-        return null;
+    public RefreshResponse refresh(RefreshRequest request) throws IOException, InterruptedException {
+        return keycloakService.refresh(request.refreshToken());
     }
 }
